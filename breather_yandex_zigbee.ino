@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "Zigbee.h"
+#include <Zigbee.h>
 
 /**
  * ESP32-C6 Zigbee sketch for a breather device:
