@@ -42,6 +42,30 @@
 - выбрана не Zigbee-совместимая плата/чип;
 - пакет плат установлен некорректно и его нужно переустановить.
 
+
+## Откуда берутся `ZigbeeFan`, `ZigbeeTempSensor` и другие команды
+
+Строка:
+
+```cpp
+ZigbeeFan zbFan(ZB_ENDPOINT_FAN);
+```
+
+использует **класс `ZigbeeFan` из той же библиотеки `Zigbee.h`** (Arduino Core Espressif). Это готовые C++-обёртки Zigbee-кластеров (endpoints/devices), которые предоставляет core, например:
+
+- `ZigbeeFan` — управление вентилятором (on/off, speed);
+- `ZigbeeTempSensor` — датчик температуры;
+- `ZigbeeHumiditySensor` — датчик влажности;
+- `ZigbeeAnalog` — универсальный аналоговый sensor/value endpoint.
+
+То есть эти «команды» не объявлены в вашем скетче — они приходят из установленного пакета плат ESP32.
+
+Типичные пути, где можно увидеть исходники после установки `esp32` core:
+
+- Linux: `~/.arduino15/packages/esp32/hardware/esp32/<version>/libraries/Zigbee/src/`
+- Windows: `%LOCALAPPDATA%\Arduino15\packages\esp32\hardware\esp32\<version>\libraries\Zigbee\src\`
+- macOS: `~/Library/Arduino15/packages/esp32/hardware/esp32/<version>/libraries/Zigbee/src/`
+
 ## Маппинг в Яндекс
 
 Обычно через Zigbee-шлюз будут видны:

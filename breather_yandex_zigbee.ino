@@ -31,6 +31,9 @@ constexpr uint32_t TELEMETRY_PERIOD_MS = 30000;
 // ------------------------------
 // Zigbee endpoints
 // ------------------------------
+// NOTE: ZigbeeFan/ZigbeeTempSensor/ZigbeeHumiditySensor/ZigbeeAnalog
+// are classes from the ESP32 Arduino Zigbee library (<Zigbee.h>),
+// not from this repository.
 ZigbeeFan zbFan(ZB_ENDPOINT_FAN);
 ZigbeeTempSensor zbTemp(ZB_ENDPOINT_TEMP);
 ZigbeeHumiditySensor zbHum(ZB_ENDPOINT_HUM);
